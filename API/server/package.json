@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "APIPA",
+  "main": "srv.js",
+  "scripts": {
+    "dev": "nodemon srv.js --ignore products.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YanisGitHubCours/e-Democracy.git"
+  },
+  "author": "William, Alexandre & Yanis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YanisGitHubCours/e-Democracy/issues"
+  },
+  "homepage": "https://github.com/YanisGitHubCours/e-Democracy#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
