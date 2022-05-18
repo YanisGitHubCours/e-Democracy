@@ -5,13 +5,16 @@ dotenv.config()
 const myport = process.env.DBPORT
 const mypassword = process.env.PASSWORD
 const myhost = process.env.HOST
-const myuser = process.env.USER
+const mydbname = process.env.DBNAME
 
 
-var connection = mysql.createConnection({
+
+let connection = mysql.createConnection({
     host: myhost,
-    user: myuser,
-    password: mypassword
+    user: 'root',
+    port: myport,
+    password: mypassword,
+    database: mydbname
 });
 
 connection.connect(function (err) {
