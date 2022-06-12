@@ -1,5 +1,6 @@
 const express = require('express');
 const adminauth = require('../controller/admin/auth.js')
+const adminuser = require('../controller/admin/user.js')
 const polls = require('../controller/admin/polls.js')
 const isAuthorized = require("../Helper/authotoken")
 const router = express.Router()
@@ -33,7 +34,7 @@ router.delete('/deletepoll', isAuthorized, async(req,res) => {
 })
 
 router.delete('/deleteaccount', isAuthorized, async(req,res) => {
-    
+    await adminuser.deleteUser(req.body.id,res)
 })
 
 
