@@ -3,7 +3,7 @@ const auth = require('../controller/user/auth.js')
 const isAuthorized = require("../Helper/authotoken")
 const router = express.Router()
 
-router.post('/login', async (req, res) => {
+router.post('/uLogin', async (req, res) => {
     await auth.login(req.body,res)
 })
 
@@ -12,7 +12,7 @@ router.post('/signUp', async (req, res) => {
 
 })
 
-router.post('/logout', isAuthorized, async(req, res) => {
+router.post('/uLogout', isAuthorized, async(req, res) => {
     await auth.logout(req,res)
 })
 
