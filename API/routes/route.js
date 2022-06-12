@@ -16,4 +16,7 @@ router.post('/logout', isAuthorized, async(req, res) => {
     await auth.logout(req,res)
 })
 
+
+
+
 module.exports = router

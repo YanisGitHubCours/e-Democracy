@@ -55,8 +55,8 @@ const logout = async(body, res) => {
     if(!body.user){
         res.status(400).send("you are not supposed to be here");
     }else {
-        const userid = body.user.user_id
-        const user = await UserModel.findOne({userid})
+        const email = body.user.email
+        const user = await UserModel.findOne({email})
         user.token = ""
         if(user.save()){
             res.status(200).send("you are disconnected")

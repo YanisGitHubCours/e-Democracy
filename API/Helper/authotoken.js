@@ -1,11 +1,12 @@
 const jwt = require("jsonwebtoken");
+const UserModel = require("../model/user")
 
 const config = process.env;
 
-const isAuthorized = (req, res, next) => {
+const isAuthorized = async (req, res, next) => {
     const token = req.headers["authorization"];
-    
-    if (!token) {
+    const user = await UserModel.findOne({token})
+    if (!token || !user) {
         return res.status(403).send("Something wrong with your request");
     }
     try {
