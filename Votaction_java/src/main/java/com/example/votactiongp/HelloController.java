@@ -33,8 +33,7 @@ public class HelloController {
 
     @FXML
     private void login(javafx.event.ActionEvent event) throws IOException {
-        System.out.println(Username.getText().equals("admin"));
-        if(Username.getText() == "admin" && Password.getText() == "admin") {
+        if(Objects.equals(Username.getText(), "admin") && Objects.equals(Password.getText(), "admin")) {
             Parent Home = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource("connected-view.fxml")));
             Scene scene = new Scene(Home);
             Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
