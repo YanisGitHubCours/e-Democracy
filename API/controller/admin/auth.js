@@ -1,24 +1,8 @@
 const bcrypt = require('bcrypt')
-const UserModel = require('../model/user.js')
+const UserModel = require('../../model/user.js')
+const RoleModel = require('../../model/role.js')
 const jwt = require("jsonwebtoken");
-
-const ParseInput = async (body,res) => {
-    
-    const user = new UserModel(body)
-    if (!user.email || !user.password || !user.lastname || !user.firstname || !user.pseudo) {
-        res.status(400).send("mail, firstname, pseudo, lastname or password cant be empty");
-    }else {
-        const oldUser = await UserModel.findOne({ email: user.email })
-        if (oldUser) {
-            res.status(400).send("User already exist");
-        }else {
-            encryptedPassword = await bcrypt.hash(user.password, 10);
-            user.password = encryptedPassword
-            await user.save()
-            res.status(200).json(user)
-        }
-    }
-}
+const Mongoose = require('mongoose');
 
 const login = async(body,res) => {
 
@@ -29,8 +13,11 @@ const login = async(body,res) => {
     }
     // Find if user exist
     const user = await UserModel.findOne({ email });
+    const id = Mongoose.Types.ObjectId(user.fk_role)
+    const userrole = await RoleModel.findOne({_id: id})
+
     //if my user exist and the password match
-    if (user && (await bcrypt.compare(password, user.password))) {
+    if (user && (await bcrypt.compare(password, user.password)) && userrole.name == "admin") {
       // Create token
       const token = jwt.sign(
         { user_id: user._id, email },
@@ -46,12 +33,12 @@ const login = async(body,res) => {
 
       // user
       res.status(200).json(user.token);
-    }else [
+    }else {
         res.status(400).send("Invalid Credentials")
-    ]
+    }
 }
 
-const logout = async(body, res) => {
+const logout = async(body,res) => {
     if(!body.user){
         res.status(400).send("you are not supposed to be here");
     }else {
@@ -66,4 +53,4 @@ const logout = async(body, res) => {
     }
 }
 
-module.exports = {ParseInput, login, logout}
+module.exports = {login, logout}

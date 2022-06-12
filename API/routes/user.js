@@ -1,5 +1,5 @@
 const express = require('express');
-const auth = require('../controller/auth.js')
+const auth = require('../controller/user/auth.js')
 const isAuthorized = require("../Helper/authotoken")
 const router = express.Router()
 
