@@ -13,28 +13,31 @@ const login = async(body,res) => {
     }
     // Find if user exist
     const user = await UserModel.findOne({ email });
-    const id = Mongoose.Types.ObjectId(user.fk_role)
-    const userrole = await RoleModel.findOne({_id: id})
 
-    //if my user exist and the password match
-    if ((user && (await bcrypt.compare(password, user.password))) || (userrole.name == "chefprojet" || userrole.name == "dev")) {
-      // Create token
-      const token = jwt.sign(
-        { user_id: user._id, email },
-        process.env.TS,
-        {
-          expiresIn: "5h",
-        }
-      );
-
-      // save user token
-      user.token = token;
-      user.save()
-
-      // user
-      res.status(200).json(user.token);
-    }else {
+    if(user && (await bcrypt.compare(password, user.password))){
+      const id = Mongoose.Types.ObjectId(user.fk_role)
+      const userrole = await RoleModel.findOne({_id: id})
+      console.log(userrole)
+      if(userrole.name == "chefprojet" || userrole.name == "dev"){
+        const token = jwt.sign(
+          { user_id: user._id, email },
+          process.env.TS,
+          {
+            expiresIn: "5h",
+          }
+        );
+  
+        // save user token
+        user.token = token;
+        user.save()
+  
+        // user
+        res.status(200).json(user.token);
+      }else {
         res.status(400).send("Invalid Credentials")
+      }
+    }else {
+      res.status(400).send("Invalid Credentials")
     }
 }
 
