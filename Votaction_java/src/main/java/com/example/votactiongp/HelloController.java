@@ -10,10 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
-
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.ResponseBody;
@@ -35,14 +33,13 @@ public class HelloController {
     private TextField Username;
 
     public HelloController() {
-    }
 
+    }
     // SI UN EMAIL INCORRECT EST ENTRER CRASH
     @FXML
     void OnClickConnexionButton(ActionEvent event) throws IOException {
         String username = Username.getText();
         String password = Password.getText();
-        System.out.println(tryConnexion(username, password));
         login(event, tryConnexion(username, password));
     }
 
@@ -66,16 +63,19 @@ public class HelloController {
             MediaType mediaType = MediaType.parse("application/json");
             RequestBody body = RequestBody.create("{\"email\": \"" + username + "\",\"password\": \"" + password + "\"}", mediaType);
             Request request = new Request.Builder()
-                    .url("http://localhost:8081/uLogin")
+                    .url("http://localhost:8081/pLogin")
                     .method("POST", body)
                     .addHeader("Content-Type", "application/json")
                     .build();
             ResponseBody response = client.newCall(request).execute().body();
+            //Verify content type to not try to deserialize a String
             if (!"application/json; charset=utf-8".equals(response.contentType().toString())){
                 return "BadCredentials";
             }
             ObjectMapper objectMapper = new ObjectMapper();
             User UserToken = objectMapper.readValue(response.string(), User.class);
+            // Close the ResponseBody to avoid connection leak
+            response.close();
             return UserToken.getToken();
         } catch (Exception e) {
             return e.toString();
