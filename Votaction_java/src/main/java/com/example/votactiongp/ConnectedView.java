@@ -7,14 +7,36 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+
 public class ConnectedView {
 
     @FXML
+    private Button AddTask;
+
+    @FXML
+    private ListView<?> AddTaskContainer;
+
+    @FXML
     private Button DecoButton;
+
+    @FXML
+    private ListView<?> FinishList;
+
+    @FXML
+    private ListView<?> InProgressList;
+
+    @FXML
+    private ListView<?> ToDoList;
+
+    @FXML
+    void OnClickAddTask(ActionEvent event) {
+
+    }
 
     @FXML
     void OnClickDeconnexionButton(ActionEvent event) throws IOException {
@@ -28,4 +50,5 @@ public class ConnectedView {
     }
 
 }
+
 

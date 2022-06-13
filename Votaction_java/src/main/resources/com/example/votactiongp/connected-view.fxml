@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.votactiongp.ConnectedView">
+<AnchorPane prefHeight="582.0" prefWidth="1186.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.votactiongp.ConnectedView">
    <children>
-      <Button fx:id="DecoButton" layoutX="27.0" layoutY="14.0" mnemonicParsing="false" onAction="#OnClickDeconnexionButton" text="Deconnexion" />
+      <Button fx:id="DecoButton" layoutX="41.0" layoutY="40.0" mnemonicParsing="false" onAction="#OnClickDeconnexionButton" text="Déconnexion" />
+      <Button fx:id="AddTask" layoutX="72.0" layoutY="169.0" mnemonicParsing="false" onAction="#OnClickAddTask" text="+" />
+      <ListView fx:id="ToDoList" layoutX="277.0" layoutY="30.0" prefHeight="540.0" prefWidth="226.0" />
+      <ListView fx:id="InProgressList" layoutX="528.0" layoutY="30.0" prefHeight="540.0" prefWidth="226.0" />
+      <ListView fx:id="FinishList" layoutX="781.0" layoutY="30.0" prefHeight="540.0" prefWidth="226.0" />
+      <Label layoutX="365.0" layoutY="3.0" text="TO DO">
+         <font>
+            <Font name="Caladea" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="588.0" layoutY="3.0" text="IN PROGRESS">
+         <font>
+            <Font name="Caladea" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="867.0" layoutY="3.0" text="FINISH">
+         <font>
+            <Font name="Caladea" size="18.0" />
+         </font>
+      </Label>
+      <ListView fx:id="AddTaskContainer" layoutX="27.0" layoutY="228.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
