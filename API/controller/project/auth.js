@@ -17,7 +17,7 @@ const login = async(body,res) => {
     const userrole = await RoleModel.findOne({_id: id})
 
     //if my user exist and the password match
-    if (user && (await bcrypt.compare(password, user.password)) && (userrole.name == "chefprojet" || userrole.name == "dev")) {
+    if ((user && (await bcrypt.compare(password, user.password))) || (userrole.name == "chefprojet" || userrole.name == "dev")) {
       // Create token
       const token = jwt.sign(
         { user_id: user._id, email },
