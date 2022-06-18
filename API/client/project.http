@@ -1,0 +1,43 @@
+###
+POST http://localhost:8081/addtask HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNzk3OWJjNWFiN2QxYmVjNDkxYmMzIiwiZW1haWwiOiJVc2VyRGV2QGdtYWlsLmNvbSIsImlhdCI6MTY1NTU1NDUyMiwiZXhwIjoxNjU1NTcyNTIyfQ.Uhkv8VP6ONlbMqJgpRQ2JBbqiDWBo1eqL4vb6DoWE8k
+Content-Type: application/json
+
+
+{
+    "name": "Finir le flutter",
+    "description": "Finir l'app web en flutter pour le 20",
+    "fk_user": "62a5a9cbb9e7b55e78fc8a73"
+}
+
+
+###
+POST http://localhost:8081/pLogin HTTP/1.1
+Content-Type: application/json
+
+
+{
+    "email": "UserDev@gmail.com",
+    "password": "votaction"
+}
+
+###
+PATCH http://localhost:8081/updatetask HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNzk3OWJjNWFiN2QxYmVjNDkxYmMzIiwiZW1haWwiOiJVc2VyRGV2QGdtYWlsLmNvbSIsImlhdCI6MTY1NTU1NDUyMiwiZXhwIjoxNjU1NTcyNTIyfQ.Uhkv8VP6ONlbMqJgpRQ2JBbqiDWBo1eqL4vb6DoWE8k
+Content-Type: application/json
+
+{
+    "id": "62aa213f23a60b5c242466a7",
+    "name": "Finir le flutter 2.0",
+    "description": "Finir l'app web fast",
+    "fk_user": "62a5a9cbb9e7b55e78fc8a73"
+}
+
+###
+DELETE http://localhost:8081/deletetask 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNzk3OWJjNWFiN2QxYmVjNDkxYmMzIiwiZW1haWwiOiJVc2VyRGV2QGdtYWlsLmNvbSIsImlhdCI6MTY1NTU1NDUyMiwiZXhwIjoxNjU1NTcyNTIyfQ.Uhkv8VP6ONlbMqJgpRQ2JBbqiDWBo1eqL4vb6DoWE8k
+Content-Type: application/application/json
+
+{
+    "id": "62aa213f23a60b5c242466a7"
+}

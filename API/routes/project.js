@@ -1,6 +1,7 @@
 const express = require('express');
 const project = require("../controller/project/auth")
 const isAuthorized = require("../Helper/authotoken")
+const task = require("../controller/project/task")
 const router = express.Router()
 
 router.post('/pLogin', async (req, res) => {
@@ -12,15 +13,15 @@ router.post('/pLogout', isAuthorized, async(req, res) => {
 })
 
 router.post('/addtask', isAuthorized, async(req,res) => {
-    console.log("add task")
+    await task.addtask(req.body,res)
 })
 
 router.patch('/updatetask', isAuthorized, async(req,res) => {
-    console.log("update task")
+    await task.updatetask(req.body, res)
 })
 
 router.delete('/deletetask', isAuthorized, async(req,res) =>{
-    console.log("delete")
+    await task.deletetask(req.body, res)
 })
 
 

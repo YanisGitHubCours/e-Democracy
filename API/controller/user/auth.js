@@ -33,7 +33,6 @@ const login = async(body,res) => {
     // Find if user exist
     const user = await UserModel.findOne({ email });
     const RoleUser = await RoleModel.findOne({_id: user.fk_role})
-    console.log(RoleUser)
     //if my user exist and the password match
     if (user && (await bcrypt.compare(password, user.password)) && RoleUser.name == "user") {
       // Create token
