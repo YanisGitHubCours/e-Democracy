@@ -56,4 +56,5 @@ const logout = async(body,res) => {
     }
 }
 
+
 module.exports = {login, logout}

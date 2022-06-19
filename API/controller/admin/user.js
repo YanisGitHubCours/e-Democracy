@@ -13,4 +13,13 @@ const deleteUser = async(req,res) => {
     }
 }
 
-module.exports = {deleteUser}
+const getUser = async(res) => {
+    const user = await UserModel.find()
+    if (poll) {
+        // return all pool
+        res.status(200).json(user);
+      }else {
+          res.status(400).send("no user")
+      }
+}
+module.exports = {deleteUser, getUser}

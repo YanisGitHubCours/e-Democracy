@@ -6,19 +6,19 @@ const Mongoose = require('mongoose');
 
 const login = async(body,res) => {
 
-    const { email, password } = body;
+  const { email, password } = body;
 
-    if (!email || !password) {
-      res.status(400).send("All input is required");
-    }
-    // Find if user exist
-    const user = await UserModel.findOne({ email });
+  if (!email || !password) {
+    res.status(400).send("All input is required");
+  }
+  // Find if user exist
+  const user = await UserModel.findOne({ email });
+
+  if(user && (await bcrypt.compare(password, user.password))){
     const id = Mongoose.Types.ObjectId(user.fk_role)
     const userrole = await RoleModel.findOne({_id: id})
-
-    //if my user exist and the password match
-    if (user && (await bcrypt.compare(password, user.password)) && userrole.name == "admin") {
-      // Create token
+    console.log(userrole)
+    if(userrole.name == "admin"){
       const token = jwt.sign(
         { user_id: user._id, email },
         process.env.TS,
@@ -34,8 +34,11 @@ const login = async(body,res) => {
       // user
       res.status(200).json(user.token);
     }else {
-        res.status(400).send("Invalid Credentials")
+      res.status(400).send("Invalid Credentials")
     }
+  }else {
+    res.status(400).send("Invalid Credentials")
+  }
 }
 
 const logout = async(body,res) => {

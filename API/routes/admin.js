@@ -37,6 +37,10 @@ router.delete('/deleteaccount', isAuthorized, async(req,res) => {
     await adminuser.deleteUser(req.body.id,res)
 })
 
+router.post('/getusers', isAuthorized, async(req,res) => {
+    await adminuser.getUser(res)
+})
+
 
 
 
