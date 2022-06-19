@@ -15,7 +15,7 @@ const deleteUser = async(req,res) => {
 
 const getUser = async(res) => {
     const user = await UserModel.find()
-    if (poll) {
+    if (user) {
         // return all pool
         res.status(200).json(user);
       }else {

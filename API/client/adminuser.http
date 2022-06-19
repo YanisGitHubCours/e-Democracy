@@ -7,3 +7,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNWE5Y2Ji
 {
     "id": "62a5f75a9ff8840f3c35a57f"
 }
+
+###
+POST http://localhost:8081/getusers HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhZjY0MWEwNTFmMThmMzgwMDJkYmY5IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2NTU2NjE4MTAsImV4cCI6MTY1NTY3OTgxMH0.jhBe9AXO_rwZp47xSkOE1172OGnGYQcp6PrsEZXJh2I
