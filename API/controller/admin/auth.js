@@ -47,16 +47,20 @@ const login = async (body, res) => {
 }
 
 const logout = async (body, res) => {
+  let jsonObject = {};
   if (!body.user) {
-    res.status(400).send("you are not supposed to be here");
+    jsonObject["error"] = "you are not supposed to be here"
+    res.status(400).send(JSON.stringify(jsonObject));
   } else {
     const email = body.user.email
     const user = await UserModel.findOne({ email })
     user.token = ""
     if (user.save()) {
-      res.status(200).send("you are disconnected")
+      jsonObject["good"] = "you are disconnected"
+      res.status(200).send(JSON.stringify(jsonObject))
     } else {
-      res.status(400).send("error in the process of logout")
+      jsonObject["error"] = "error in the process of logout"
+      res.status(400).send(JSON.stringify(jsonObject))
     }
   }
 }
