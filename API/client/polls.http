@@ -4,8 +4,8 @@ Content-Type: application/json
 
 
 {
-    "email": "JohnWick@gmail.com",
-    "password": "LeagueOfLegends"
+    "email": "admin@gmail.com",
+    "password": ""
 }
 
 ###
