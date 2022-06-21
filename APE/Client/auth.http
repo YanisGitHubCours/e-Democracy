@@ -1,0 +1,21 @@
+POST http://localhost:3077/register
+Content-Type: application/json
+
+{
+    "username": "toto",
+    "mail": "toto@gmail.com",
+    "phone": "0606060606",
+    "name": "toto1",
+    "lastname": "toto2",
+    "password": "toto4567890"
+}
+
+
+###
+POST http://localhost:3077/login
+Content-Type: application/json
+
+{
+    "mail": "toto@gmail.com",
+    "password": "toto4567890"
+}
