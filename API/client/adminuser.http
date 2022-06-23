@@ -7,3 +7,13 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNWE5Y2Ji
 {
     "id": "62a5f75a9ff8840f3c35a57f"
 }
+
+###
+POST http://localhost:8081/getusers HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhZjY0MWEwNTFmMThmMzgwMDJkYmY5IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2NTU4ODQ0MzIsImV4cCI6MTY1NTkwMjQzMn0.K1IP3ZeTK7BRD7SOakEmT7Q0C8xz5Q3-qdF97l6l75c
+
+###
+POST http://localhost:8081/getpollsdesc HTTP/1.1
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhZjY0MWEwNTFmMThmMzgwMDJkYmY5IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2NTYwMDY0MzgsImV4cCI6MTY1NjAyNDQzOH0.r5YKWYqkNAW6fFcykQ6IALwOBjrbh15QyhxWKXMX7y8

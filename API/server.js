@@ -11,9 +11,11 @@ const bodyparser = require('body-parser')
 dotenv.config()
 const app = express()
 const port = process.env.PORT
-const username = process.env.USER
-const password = process.env.PWD
+const username = process.env.USERDB
+const password = process.env.DBPWD
 const dbname = process.env.DBNAME
+
+
 
 
 // Middleware
@@ -22,23 +24,23 @@ app.use(morgan('tiny'))
 
 //BDD connection and server start
 mongoose.connect(
-    `mongodb+srv://${username}:${password}@votaction.scor1.mongodb.net/${dbname}?retryWrites=true&w=majority`,
-    {
-      useNewUrlParser: true,
-      useFindAndModify: false,
-      useUnifiedTopology: true
-    }
-  );
-  
-  const db = mongoose.connection;
-  db.on("error", console.error.bind(console, "connection error: "));
-  db.once("open", function () {
-    console.log("Connected");
-  });
-  
-  app.use(routeruser);
-  app.use(routeradmin)
-  app.use(routerproject)
-  app.listen(process.env.PORT || 8080, () => {
-    console.log(`server listen at ${port}`)
+  `mongodb+srv://${username}:${password}@votaction.scor1.mongodb.net/${dbname}?retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+  }
+);
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function () {
+  console.log("Connected");
+});
+
+app.use(routeruser);
+app.use(routeradmin)
+app.use(routerproject)
+app.listen(process.env.PORT || 8080, () => {
+  console.log(`server listen at ${port}`)
 })
