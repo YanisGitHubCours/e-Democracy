@@ -41,6 +41,10 @@ router.post('/getusers', isAuthorized, async(req,res) => {
     await adminuser.getUser(res)
 })
 
+router.post('/getpollsdesc', isAuthorized, async(req,res) => {
+    await polls.getPollsDesc(res)
+})
+
 
 
 
