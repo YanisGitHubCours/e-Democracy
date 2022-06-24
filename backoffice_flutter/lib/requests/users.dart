@@ -48,10 +48,11 @@ class Users {
   }
 
   static Future<dynamic> deleteUser(String? id) async {
-    var body = jsonEncode({"id": "$id"});
+    var body = jsonEncode({"id": id});
     final response = await http.delete(
       Uri.parse(delUserById),
       headers: {
+        "Content-type" : "application/json",
         HttpHeaders.authorizationHeader: TokenSimplePreferences.getToken('token').toString(),
       },
       body: body,
