@@ -1,5 +1,4 @@
 import 'package:backoffice_flutter/constants/constants.dart';
-import 'package:backoffice_flutter/screens/administration/administration_screen.dart';
 import 'package:backoffice_flutter/screens/login/login_page.dart';
 import 'package:backoffice_flutter/screens/surveys/surveys_screen.dart';
 import 'package:backoffice_flutter/screens/users/users_screen.dart';
@@ -73,23 +72,6 @@ class SideMenu extends StatelessWidget {
                 }
               },
               select: select == 3 ? true : false,
-            ),
-            DrawerListTile(
-              title: "Administration",
-              logo: Icon(
-                Icons.admin_panel_settings,
-                color: select == 4 ? Colors.white : pitaya,
-              ),
-              press: () {
-                if (select != 4) {
-                  Navigator.push(
-                      context,
-                      PageTransition(
-                          type: PageTransitionType.fade,
-                          child: const AdministrationScreen()));
-                }
-              },
-              select: select == 4 ? true : false,
             ),
             ListTile(
               onTap: () async {

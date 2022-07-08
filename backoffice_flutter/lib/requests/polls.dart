@@ -49,6 +49,28 @@ class Polls {
     return surveys;
   }
 
+  static Future<dynamic> deleteSurvey(String? id) async {
+    var body = jsonEncode({"id": id});
+    final response = await http.delete(
+      Uri.parse(deletePollsId),
+      headers: {
+        "Content-type" : "application/json",
+        HttpHeaders.authorizationHeader: TokenSimplePreferences.getToken('token').toString(),
+      },
+      body: body,
+      encoding: Encoding.getByName("utf-8"),
+    );
+
+    if (response.statusCode != 200) {
+      throw Error();
+    }
+
+    if (response.statusCode == 200) {
+      return true;
+    }
+
+  }
+
   static Future countPolls() async {
     final response = await http.get(
       Uri.parse(getAllPolls),

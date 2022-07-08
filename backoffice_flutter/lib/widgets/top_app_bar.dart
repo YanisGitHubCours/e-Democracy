@@ -27,29 +27,6 @@ AppBar topAppBar(BuildContext context, String title) => AppBar(
               weight: FontWeight.bold,
             ),
           ),
-          const Spacer(),
-          CustomText(
-            text: "Santos Enoque",
-            color: grey,
-          ),
-          const SizedBox(width: 16),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Container(
-              padding: EdgeInsets.all(2),
-              margin: EdgeInsets.all(2),
-              child: const CircleAvatar(
-                backgroundColor: bgColor,
-                child: Icon(
-                  Icons.person_outline,
-                  color: grey,
-                ),
-              ),
-            ),
-          )
         ],
       ),
       iconTheme: const IconThemeData(color: grey),

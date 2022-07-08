@@ -20,6 +20,10 @@ const getPollsDesc = "http://localhost:8081/getpollsdesc";
 // Content-Type: application/json
 // Authorization: [TOKEN]
 
+const deletePollsId = "http://localhost:8081/deletepoll";
+// Content-Type: application/json
+// Authorization: [TOKEN]
+
 const getAllUsers = "http://localhost:8081/getusers";
 // Content-Type: application/json
 // Authorization: [TOKEN]
