@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  votaction
 //
-//  Created by Yanis on 09/07/2022.
+//  Created by Alexandre Marcos on 06/06/2022.
 //
 
 import UIKit
