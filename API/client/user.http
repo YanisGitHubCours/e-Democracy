@@ -17,8 +17,8 @@ Content-Type: application/json
 
 
 {
-    "email": "JohnWick@gmail.com",
-    "password": "Dota2"
+    "email": "User@gmail.com",
+    "password": "votaction"
 }
 
 ###

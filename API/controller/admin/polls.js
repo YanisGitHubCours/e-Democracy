@@ -13,10 +13,23 @@ const getPolls = async (res) => {
   }
 }
 
+const getPollsDesc = async (res) => {
+  // Find pool
+  const poll = await PollModel.find().sort({_id: -1})
+
+  //if my pool exist
+  if (poll) {
+    // return all pool
+    res.status(200).json(poll);
+  } else {
+    res.status(400).send("no poll")
+  }
+}
+
 const getPollsByIdUser = async (req, res) => {
   // Find pool
   const user = req.body.id
-  const poll = await PollModel.findOne({ fk_user: user })
+  const poll = await PollModel.find()
 
   //if my pool exist
   if (poll) {
@@ -66,4 +79,4 @@ const deletePolls = async (req, res) => {
   }
 }
 
-module.exports = { getPolls, getPollsByIdUser, getPollsByType, getPollsByTimer, deletePolls }
+module.exports = { getPolls, getPollsByIdUser, getPollsByType, getPollsByTimer, deletePolls, getPollsDesc }
