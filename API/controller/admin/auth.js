@@ -11,7 +11,7 @@ const login = async (body, res) => {
 
   if (!email || !password) {
     jsonObject["error"] = "All input is required"
-    res.status(400).send(JSON.stringify(jsonObject));
+    res.status(400).json(jsonObject);
   }
   // Find if user exist
   const user = await UserModel.findOne({ email });
