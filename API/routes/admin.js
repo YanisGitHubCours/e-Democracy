@@ -3,6 +3,7 @@ const adminauth = require('../controller/admin/auth.js')
 const adminuser = require('../controller/admin/user.js')
 const polls = require('../controller/admin/polls.js')
 const isAuthorized = require("../Helper/authotoken")
+const adminanswer = require('../controller/admin/answer.js')
 const router = express.Router()
 
 router.post('/aLogin', async (req, res) => {
@@ -35,6 +36,10 @@ router.delete('/deletepoll', isAuthorized, async(req,res) => {
 
 router.delete('/deleteaccount', isAuthorized, async(req,res) => {
     await adminuser.deleteUser(req.body.id,res)
+})
+
+router.post('/getAnswerByIdPoll', isAuthorized, async(req,res) =>{
+    await adminanswer.getAnswerById(req, res)
 })
 
 
