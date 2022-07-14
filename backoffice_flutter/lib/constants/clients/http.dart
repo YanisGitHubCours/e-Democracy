@@ -20,9 +20,21 @@ const getPollsDesc = "http://localhost:8081/getpollsdesc";
 // Content-Type: application/json
 // Authorization: [TOKEN]
 
+const getAnswerByPolls = "http://localhost:8081/getAnswerByIdPoll";
+// Content-Type: application/json
+// Authorization: [TOKEN]
+
+// {
+//   "id": ""
+// }
+
 const deletePollsId = "http://localhost:8081/deletepoll";
 // Content-Type: application/json
 // Authorization: [TOKEN]
+
+// {
+//   "id": ""
+// }
 
 const getAllUsers = "http://localhost:8081/getusers";
 // Content-Type: application/json
@@ -31,3 +43,7 @@ const getAllUsers = "http://localhost:8081/getusers";
 const delUserById = "http://localhost:8081/deleteaccount";
 // Content-Type: application/json
 // Authorization: [TOKEN]
+
+// {
+//   "id": ""
+// }

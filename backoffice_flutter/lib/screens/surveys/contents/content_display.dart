@@ -1,6 +1,7 @@
 import 'package:backoffice_flutter/constants/constants.dart';
 import 'package:backoffice_flutter/models/survey.dart';
 import 'package:backoffice_flutter/requests/polls.dart';
+import 'package:backoffice_flutter/screens/surveys/components/answer_survey.dart';
 import 'package:backoffice_flutter/screens/surveys/components/detail_survey.dart';
 import 'package:backoffice_flutter/widgets/survey_item.dart';
 import 'package:flutter/material.dart';
@@ -115,9 +116,21 @@ class _ContentDisplayState extends State<ContentDisplay> {
             const SizedBox(width: defaultPadding),
             Expanded(
               flex: 2,
-              child: DetailSurvey(
-                surveySelected: _surveySelected,
-                reload: _reload,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: DetailSurvey(
+                      surveySelected: _surveySelected,
+                      reload: _reload,
+                    ),
+                  ),
+                  const SizedBox(height: defaultPadding),
+                  Expanded(
+                    child: AnswerSurvey(
+                      surveySelected: _surveySelected,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

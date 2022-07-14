@@ -37,127 +37,133 @@ class _DetailSurveyState extends State<DetailSurvey> {
       ),
       child: widget._surveySelected != null
           ? Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(defaultPadding),
-                  child: Row(
-                    children: [
-                      const Text(
-                        'Détails :',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Helvetica',
-                          color: pitaya,
-                          fontSize: 25,
-                        ),
-                      ),
-                      const Spacer(),
-                      GestureDetector(
-                        onTap: () async {
-                          if (await Polls.deleteSurvey(
-                              widget._surveySelected?.id)) {
-                            widget.reload();
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text(
-                                      'Erreur lors de la suppression rééssayez ultérieurement')),
-                            );
-                          }
-                        },
-                        child: const Icon(Icons.delete),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(defaultPadding),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'ID : ${widget._surveySelected?.id}',
-                                style: const TextStyle(
-                                  fontSize: 17,
-                                  color: grey,
-                                  fontFamily: 'Helvetica',
-                                ),
-                              ),
-                              Text(
-                                'Nom : ${widget._surveySelected?.name}',
-                                style: const TextStyle(
-                                  fontSize: 17,
-                                  color: grey,
-                                  fontFamily: 'Helvetica',
-                                ),
-                              ),
-                              Text(
-                                'Type : ${widget._surveySelected?.type}',
-                                style: const TextStyle(
-                                  fontSize: 17,
-                                  color: grey,
-                                  fontFamily: 'Helvetica',
-                                ),
-                              ),
-                            ],
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(defaultPadding),
+                      child: Row(
+                        children: [
+                          const Text(
+                            'Détails :',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Helvetica',
+                              color: pitaya,
+                              fontSize: 25,
+                            ),
                           ),
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Accessibilité : ${ano ? 'Privé ' : 'Public'}',
-                                style: const TextStyle(
-                                  fontSize: 17,
-                                  color: grey,
-                                  fontFamily: 'Helvetica',
-                                ),
-                              ),
-                              Text(
-                                'Status : ${finish ? "Terminé" : "En cours"}',
-                                style: const TextStyle(
-                                  fontSize: 17,
-                                  color: grey,
-                                  fontFamily: 'Helvetica',
-                                ),
-                              ),
-                              Text(
-                                'Timer : ${widget._surveySelected?.timer}',
-                                style: const TextStyle(
-                                  fontSize: 17,
-                                  color: grey,
-                                  fontFamily: 'Helvetica',
-                                ),
-                              ),
-                            ],
+                          const Spacer(),
+                          GestureDetector(
+                            onTap: () async {
+                              if (await Polls.deleteSurvey(
+                                  widget._surveySelected?.id)) {
+                                widget.reload();
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          'Erreur lors de la suppression rééssayez ultérieurement')),
+                                );
+                              }
+                            },
+                            child: const Icon(Icons.delete),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: Padding(
-                    padding: const EdgeInsets.all(defaultPadding),
-                    child: Text(
-                      'Description : ${widget._surveySelected?.description}',
-                      style: const TextStyle(
-                        fontSize: 17,
-                        color: grey,
-                        fontFamily: 'Helvetica',
+                        ],
                       ),
                     ),
-                  ),
-                ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(defaultPadding),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'ID : ${widget._surveySelected?.id}',
+                                    style: const TextStyle(
+                                      fontSize: 17,
+                                      color: grey,
+                                      fontFamily: 'Helvetica',
+                                    ),
+                                  ),
+                                  Text(
+                                    'Nom : ${widget._surveySelected?.name}',
+                                    style: const TextStyle(
+                                      fontSize: 17,
+                                      color: grey,
+                                      fontFamily: 'Helvetica',
+                                    ),
+                                  ),
+                                  Text(
+                                    'Type : ${widget._surveySelected?.type}',
+                                    style: const TextStyle(
+                                      fontSize: 17,
+                                      color: grey,
+                                      fontFamily: 'Helvetica',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Accessibilité : ${ano ? 'Privé ' : 'Public'}',
+                                    style: const TextStyle(
+                                      fontSize: 17,
+                                      color: grey,
+                                      fontFamily: 'Helvetica',
+                                    ),
+                                  ),
+                                  Text(
+                                    'Status : ${finish ? "Terminé" : "En cours"}',
+                                    style: const TextStyle(
+                                      fontSize: 17,
+                                      color: grey,
+                                      fontFamily: 'Helvetica',
+                                    ),
+                                  ),
+                                  Text(
+                                    'Timer : ${widget._surveySelected?.timer}',
+                                    style: const TextStyle(
+                                      fontSize: 17,
+                                      color: grey,
+                                      fontFamily: 'Helvetica',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: Padding(
+                        padding: const EdgeInsets.all(defaultPadding),
+                        child: Text(
+                          'Description : ${widget._surveySelected?.description}',
+                          style: const TextStyle(
+                            fontSize: 17,
+                            color: grey,
+                            fontFamily: 'Helvetica',
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
               ],
             )
           : const Center(

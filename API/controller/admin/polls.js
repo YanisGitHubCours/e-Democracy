@@ -1,4 +1,5 @@
 const PollModel = require('../../model/poll.js')
+const AnswerModel = require('../../model/answer.js')
 
 const getPolls = async (res) => {
   // Find pool
@@ -29,7 +30,7 @@ const getPollsDesc = async (res) => {
 const getPollsByIdUser = async (req, res) => {
   // Find pool
   const user = req.body.id
-  const poll = await PollModel.find({fk_user:user})
+  const poll = await PollModel.find()
 
   //if my pool exist
   if (poll) {
@@ -68,15 +69,18 @@ const getPollsByType = async (req, res) => {
 
 const deletePolls = async (req, res) => {
   const id = req.body.id
-  const poll = await PollModel.findOneAndDelete({ _id: id })
-
-  //if my pool exist
-  if (poll) {
-    // return all pool
-    res.status(200).json("success");
-  } else {
-    res.status(400).send("error in delete process")
+  const poll = await PollModel.findOneAndDelete({_id: id})
+  if(poll){
+    const answer = await AnswerModel.deleteMany({idPolls_fk: id})
+    if(answer){
+      res.status(400).send("success")
+    }else{
+      res.status(400).send("error in answer delete")
+    }
+  }else{
+    res.status(400).send("error dont find poll")
   }
 }
 
-module.exports = { getPolls, getPollsByIdUser, getPollsByType, getPollsByTimer, deletePolls, getPollsDesc }
+
+module.exports = {getPolls, getPollsByIdUser, getPollsByType, getPollsDesc,getPollsByTimer, deletePolls}

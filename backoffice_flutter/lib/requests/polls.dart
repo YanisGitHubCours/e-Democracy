@@ -1,10 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:backoffice_flutter/constants/clients/http.dart';
+
 import 'package:backoffice_flutter/models/survey.dart';
+import 'package:backoffice_flutter/models/answer.dart';
 
 import 'package:backoffice_flutter/utils/token_preferences.dart';
 import 'package:http/http.dart' as http;
+
+
 
 class Polls {
   static Future<List<Survey>?> getAllPollsDesc() async {
@@ -47,6 +51,29 @@ class Polls {
     final List<Survey> surveys =
         (jsonBody as List).map((survey) => Survey.fromJson(survey)).toList();
     return surveys;
+  }
+
+  static Future<List<Answer>?> getAnswerByIdPolls(String? id) async {
+    var body = jsonEncode({"id": id});
+    final response = await http.post(
+      Uri.parse(getAnswerByPolls),
+      headers: {
+        "Content-Type": "application/json",
+        HttpHeaders.authorizationHeader:
+        TokenSimplePreferences.getToken('token').toString(),
+      },
+      body: body,
+      encoding: Encoding.getByName("utf-8"),
+    );
+
+    if (response.statusCode == 400) return null;
+
+    if (response.statusCode != 200) throw Error();
+
+    final jsonBody = json.decode(response.body);
+    final List<Answer> answers =
+    (jsonBody as List).map((answers) => Answer.fromJson(answers)).toList();
+    return answers;
   }
 
   static Future<dynamic> deleteSurvey(String? id) async {
