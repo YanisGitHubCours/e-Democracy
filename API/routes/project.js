@@ -24,6 +24,10 @@ router.delete('/deletetask', isAuthorized, async(req,res) =>{
     await task.deletetask(req.body, res)
 })
 
+router.get('/gettask', isAuthorized, async(req,res) =>{
+    await task.getTask(res)
+})
+
 
 
 

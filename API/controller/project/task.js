@@ -74,5 +74,14 @@ const deletetask = async(body,res) => {
     }
 }
 
+const getTask = async(res) => {
+  const task = await TaskModel.find();
+  if(task){
+    res.status(200).send(task)
+  }else{
+    res.status(400).send('no task find')
+  }
+}
 
-module.exports = {addtask, updatetask, deletetask}
+
+module.exports = {addtask, updatetask, deletetask, getTask}
