@@ -83,4 +83,4 @@ const deletePolls = async (req, res) => {
 }
 
 
-module.exports = {getPolls, getPollsByIdUser, getPollsByType, getPollsByTimer, deletePolls}
+module.exports = {getPolls, getPollsByIdUser, getPollsByType, getPollsByTimer, deletePolls,getPollsDesc}

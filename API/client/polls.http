@@ -57,7 +57,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNWE5Y2Ji
 ###
 DELETE  http://localhost:8081/deletepoll HTTP/1.1
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhZjY0MWEwNTFmMThmMzgwMDJkYmY5IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2NTc3MTQ2ODEsImV4cCI6MTY1NzczMjY4MX0.Z_SDRBDlj9drGmELev-THnMdYZAklaYML4PqbfwjAEY
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhZjY0MWEwNTFmMThmMzgwMDJkYmY5IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2NTc3OTQzMzYsImV4cCI6MTY1NzgxMjMzNn0.a-bQ5P10kxgI0U398GxPA5yp94ZGz0wt_EKYmhS8MOA
 
 {
     "id": "62b4828ce08fc251adced79f"

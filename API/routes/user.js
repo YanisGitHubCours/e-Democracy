@@ -21,6 +21,10 @@ router.patch('/updateprofile', isAuthorized, async(req,res) => {
     await userSwift.updateprofile(req.body, res)
 })
 
+router.post('/addPoll', isAuthorized, async(req,res) => {
+    const token = req.headers["authorization"];
+    await userSwift.addPoll(req.body,token,res)
+})
 
 
 

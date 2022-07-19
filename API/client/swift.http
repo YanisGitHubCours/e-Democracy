@@ -12,3 +12,23 @@ Content-Type: application/json
     "bio": "nouveau profile", 
     "img": "" 
 }
+
+###
+POST http://localhost:8081/addPoll HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNjU1NDc3YmMyNWE3OTk4MTRiNTFkIiwiZW1haWwiOiJVc2VyQGdtYWlsLmNvbSIsImlhdCI6MTY1ODIyMzY3MCwiZXhwIjoxNjU4MjQxNjcwfQ.o_eMJI3JSmD4k171hkTFExvWvJKHO7AASWvHJ3NEArw
+Content-Type: application/json
+
+{
+    "name": "2022 pire que 2021",
+    "description": "Savoir si 2022 est pire que 2021 pour vous",
+    "type": "public",
+    "isAnonym": false,
+    "isFinish": false,
+    "timer": "01/08/2022",
+    "reponse":{
+        "reponse1": "non",
+        "reponse2": "oui",
+        "reponse3": "va te faire foutre William",
+        "reponse4": "Marcos est vraiment trop kawai"
+    }
+}
