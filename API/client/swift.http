@@ -32,3 +32,22 @@ Content-Type: application/json
         "reponse4": "Marcos est vraiment trop kawai"
     }
 }
+
+###
+POST http://localhost:8081/CreateGroup HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNjU1NDc3YmMyNWE3OTk4MTRiNTFkIiwiZW1haWwiOiJVc2VyQGdtYWlsLmNvbSIsImlhdCI6MTY1ODIyMzY3MCwiZXhwIjoxNjU4MjQxNjcwfQ.o_eMJI3JSmD4k171hkTFExvWvJKHO7AASWvHJ3NEArw
+Content-Type: application/json
+
+{
+    "name": "ESGI",
+    "description": "Groupe de l'école ESGI"
+}
+
+###
+POST http://localhost:8081/addGroup HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNjU1NDc3YmMyNWE3OTk4MTRiNTFkIiwiZW1haWwiOiJVc2VyQGdtYWlsLmNvbSIsImlhdCI6MTY1ODIyMzY3MCwiZXhwIjoxNjU4MjQxNjcwfQ.o_eMJI3JSmD4k171hkTFExvWvJKHO7AASWvHJ3NEArw
+Content-Type: application/json
+
+{
+    "email": "undertaker@gmail.com"
+}

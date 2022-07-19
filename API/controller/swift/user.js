@@ -2,6 +2,7 @@
 const PollModel = require('../../model/poll.js')
 const AnswerModel = require('../../model/answer.js')
 const UserModel = require('../../model/user.js')
+const GroupModel = require('../../model/group.js')
 const Mongoose = require('mongoose');
 
 
@@ -68,6 +69,60 @@ const addPoll = async(body,token,res) => {
   }
 }
 
+const createGroup = async(req,token, res) => {
+  if(!req.body){
+    res.status(400).send("All input is required");
+  }else{
+    const ModelGroup = new GroupModel(req.body)
+    const user = await UserModel.findOne({token})
+    if(user){
+      ModelGroup.owner = user._id
+      const existGroup = await GroupModel.findOne({name: ModelGroup.name})
+      if(existGroup){
+        res.status(400).send("Group already exist")
+      }else {
+        ModelGroup.save()
+        user.fk_group = ModelGroup._id
+        user.save()
+        res.status(200).send("Group create")
+      }
+    }else{
+      res.status(400).send("Invalid Credentials")
+    }
+  }
+  
+}
+
+const addGroup = async(req,token,res) => {
+  if(!req.body){
+    res.status(400).send("All input is required");
+  }else{
+    const email = req.body.email
+    const user = await UserModel.findOne({token})
+    if(user){
+      const existGroup = await GroupModel.findOne({_id: user.fk_group})
+      if(existGroup){
+        const adduser = await UserModel.findOne({email: email})
+        if(adduser){
+          if(adduser.fk_group == existGroup._id){
+            res.status(400).send("already in the group")
+          }else {
+            adduser.fk_group = existGroup._id
+            adduser.save()
+            res.status(200).send("add to group done")
+          }
+        }else{
+          res.status(400).send("user dont exist");
+        }
+      }else{
+        res.status(400).send("group dont exist");
+      }
+    }else{
+      res.status(400).send("Invalid Credentials");
+    }
+  }
+}
 
 
-module.exports = {updateprofile, updateprofile, addPoll}
+
+module.exports = {updateprofile, updateprofile, addPoll, createGroup, addGroup}

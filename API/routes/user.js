@@ -26,6 +26,16 @@ router.post('/addPoll', isAuthorized, async(req,res) => {
     await userSwift.addPoll(req.body,token,res)
 })
 
+router.post('/createGroup', isAuthorized, async(req,res) => {
+    const token = req.headers["authorization"];
+    await userSwift.createGroup(req,token,res)
+})
+
+router.post('/addGroup', isAuthorized, async(req,res) => {
+    const token = req.headers["authorization"];
+    await userSwift.addGroup(req,token,res)
+})
+
 
 
 module.exports = router

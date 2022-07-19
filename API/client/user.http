@@ -2,12 +2,12 @@ POST http://localhost:8081/signUp HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstname": "Johnny",
-    "lastname": "Wicky",
-    "pseudo": "RealJohnWick",
-    "email": "Johnny@gmail.com",
-    "password": "RainbowSixSiege",
-    "bio": "Bang Bang",
+    "firstname": "Kawai",
+    "lastname": "kiwi",
+    "pseudo": "TheUndertaker",
+    "email": "undertaker@gmail.com",
+    "password": "Undertaker",
+    "bio": "never die",
     "img": ""
 }
 
