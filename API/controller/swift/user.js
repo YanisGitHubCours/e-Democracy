@@ -131,11 +131,14 @@ const getResultPoll = async(req,token,res) => {
   }else {
     const myPoll = await PollModel.findOne({name: req.body.name})
     const vote = await VoteModel.find({fk_poll: myPoll._id})
+    let arrayResult = []
     let count = 0
-    let tmp = 0
     for(i in vote){
-      
+      const tmp = await VoteModel.countDocuments({fk_answer: vote[i].fk_answer})
+      arrayResult[count] = tmp
+      count = count + 1
     }
+    res.status(200).json(arrayResult)
   }
 }
 
