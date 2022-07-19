@@ -15,12 +15,12 @@ Content-Type: application/json
 
 ###
 POST http://localhost:8081/addPoll HTTP/1.1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNjU1NDc3YmMyNWE3OTk4MTRiNTFkIiwiZW1haWwiOiJVc2VyQGdtYWlsLmNvbSIsImlhdCI6MTY1ODIyMzY3MCwiZXhwIjoxNjU4MjQxNjcwfQ.o_eMJI3JSmD4k171hkTFExvWvJKHO7AASWvHJ3NEArw
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNjU1NDc3YmMyNWE3OTk4MTRiNTFkIiwiZW1haWwiOiJVc2VyQGdtYWlsLmNvbSIsImlhdCI6MTY1ODI2NDIwNCwiZXhwIjoxNjU4MjgyMjA0fQ.iIyHM4vUsRWCFNhUG4_BN6Hwh03UeT-OmUKCpLVAvPY
 Content-Type: application/json
 
 {
-    "name": "2022 pire que 2021",
-    "description": "Savoir si 2022 est pire que 2021 pour vous",
+    "name": "est ce qu'il fait trop chaud ?",
+    "description": "Vous pensez qu'il fait trop chaud ?",
     "type": "public",
     "isAnonym": false,
     "isFinish": false,
@@ -28,7 +28,7 @@ Content-Type: application/json
     "reponse":{
         "reponse1": "non",
         "reponse2": "oui",
-        "reponse3": "va te faire foutre William",
+        "reponse3": "reponse D",
         "reponse4": "Marcos est vraiment trop kawai"
     }
 }
@@ -50,4 +50,23 @@ Content-Type: application/json
 
 {
     "email": "undertaker@gmail.com"
+}
+
+###
+POST http://localhost:8081/getResultPoll HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNjU1NDc3YmMyNWE3OTk4MTRiNTFkIiwiZW1haWwiOiJVc2VyQGdtYWlsLmNvbSIsImlhdCI6MTY1ODI2NjU3OSwiZXhwIjoxNjU4Mjg0NTc5fQ.Z_honIp_N5pgh57RFFjh3txiw5HfHv4c5HEJOxv7pZg
+Content-Type: application/json
+
+{
+    "name" : "2022 pire que 2021"
+}
+
+###
+POST http://localhost:8081/vote HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjJhNjU1NDc3YmMyNWE3OTk4MTRiNTFkIiwiZW1haWwiOiJVc2VyQGdtYWlsLmNvbSIsImlhdCI6MTY1ODI2NjU3OSwiZXhwIjoxNjU4Mjg0NTc5fQ.Z_honIp_N5pgh57RFFjh3txiw5HfHv4c5HEJOxv7pZg
+Content-Type: application/json
+
+{
+    "fk_answer": "62d71c6247f24f45d8f95cf7",
+    "fk_poll": "62d71c6247f24f45d8f95cf3"
 }

@@ -4,6 +4,7 @@ const AnswerModel = require('../../model/answer.js')
 const UserModel = require('../../model/user.js')
 const GroupModel = require('../../model/group.js')
 const Mongoose = require('mongoose');
+const VoteModel = require('../../model/votes.js')
 
 
 const updateprofile = async(body,res) => {
@@ -39,32 +40,33 @@ const updateprofile = async(body,res) => {
 }
 
 const addPoll = async(body,token,res) => {
-  const { name, description, type, timer, reponse} = body
 
-  if (!name || !description || !type || !timer || reponse) {
+  if (!body) {
     res.status(400).send("All input is required");
-  }
-
-  const user = await UserModel.findOne({token})
-  if(user){
-    console.log("in condition user exist")
-    const poll = new PollModel(body)
-    const idPoll = poll._id
-    if(poll){
-      console.log("in condition poll exist")
-      if(poll.save()){
-        console.log("poll created")
-        for(let i in reponse){
-          let arrayAnswer = {"content": reponse[i], "idPolls_fk": idPoll}
-          console.log(arrayAnswer)
-          let answer = new AnswerModel(arrayAnswer)
-          answer.save()
+  }else{
+    const user = await UserModel.findOne({token})
+    if(user){
+      const poll = new PollModel(body)
+      const idPoll = poll._id
+      if(poll){
+        const oldPoll = await PollModel.findOne({name: poll.name})
+        if(oldPoll){
+          res.status(400).send("Poll already exist")
+        }else {
+          if(poll.save()){
+            for(let i in reponse){
+              let arrayAnswer = {"content": reponse[i], "idPolls_fk": idPoll}
+              console.log(arrayAnswer)
+              let answer = new AnswerModel(arrayAnswer)
+              answer.save()
+            }
+          }else{
+            res.status(400).send("error")
+          }
         }
-      }else {
+      }else{
         res.status(400).send("Invalid Credentials")
       }
-    }else{
-      res.status(400).send("Invalid Credentials")
     }
   }
 }
@@ -123,6 +125,38 @@ const addGroup = async(req,token,res) => {
   }
 }
 
+const getResultPoll = async(req,token,res) => {
+  if(!req.body){
+    res.status(400).send("All input is required");
+  }else {
+    const myPoll = await PollModel.findOne({name: req.body.name})
+    const vote = await VoteModel.find({fk_poll: myPoll._id})
+    let count = 0
+    let tmp = 0
+    for(i in vote){
+      
+    }
+  }
+}
+
+const votes = async(body,token,res) => {
+  if (!body) {
+    res.status(400).send("All input is required");
+  }else{
+    const user = await UserModel.findOne({token: token})
+    const votes = await VoteModel.findOne({fk_user: user._id})
+    const poll = await PollModel.findOne({_id: votes.fk_poll})
+    if(votes && poll){
+      res.status(202).send("You already vote for this poll")
+    }else{
+      const newVote = new VoteModel(body)
+      newVote.fk_user = user._id
+      newVote.save()
+      res.status(200).send("Success")
+    }
+  }
+}
 
 
-module.exports = {updateprofile, updateprofile, addPoll, createGroup, addGroup}
+
+module.exports = {updateprofile, updateprofile, addPoll, createGroup, addGroup,getResultPoll,votes}
